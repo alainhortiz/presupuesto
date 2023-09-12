@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro de Usuario{% endblock %}
+
+{% block body %}
+    <body class="hold-transition register-page">
+    <div class="register-box text-center">
+        <div class="card" style="width: 435px;">
+            <div class="card-body">
+                <h3>Registro de Nuevo Usuario</h3>
+                <br>
+                {{ include('registration/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

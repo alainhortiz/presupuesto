@@ -1,0 +1,16 @@
+{{ form_start(form, {'attr': {'id':'form_cargo'}}) }}
+<form role="form" action="{{ path('app_cargo_new') }}">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                {{ form_row(form.nombre) }}
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" style="float: left;"> Guardar</button>
+        <a class="btn btn-default" style="float: right" href="{{ path('app_cargo_index') }}"> Cancelar</a>
+    </div>
+    {{ form_row(form._token) }}
+</form>
+{{ form_end(form) }}

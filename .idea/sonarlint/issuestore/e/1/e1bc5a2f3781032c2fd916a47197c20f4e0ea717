@@ -1,0 +1,5 @@
+
+lphp:S103…"KSplit this 125 characters long line (which is greater than 120 authorized).(Ğ²˜¡ûÿÿÿÿ8Ê¤ã§1
+gphp:S103‘"KSplit this 135 characters long line (which is greater than 120 authorized).(ãûİ²8ú˜¾œ§1
+	php:S1448
+"cClass "Entidad" has 33 methods, which is greater than 20 authorized. Split it into smaller classes.(†í’Ï8¨‰¯œ§1

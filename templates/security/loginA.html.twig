@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrar{% endblock %}
+
+{% block body %}
+<body class="hold-transition login-page" style="background-color: rgb(85 92 96);min-height: 344.167px;">
+<div class="login-box">
+    <div class="card">
+        <div class="card-body login-card-body">
+            <div class="login-logo">
+                <div class="col-sm-12">
+                    <a href="{{ path('app_login') }}"><img src="{{ asset('dist/img/logoUH1.png') }}" alt="Logo UH"
+                                                           height="100" width="300"></a>
+                </div>
+            </div>
+            <!-- /.login-logo -->
+            <p class="login-box-msg">Entre para comenzar su sesi&oacute;n</p>
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                <div class="input-group mb-3">
+                    <input type="email" value="{{ last_username }}" name="username" id="inputUsername"
+                           class="form-control" autocomplete="username" required autofocus placeholder="Entre el usuario">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password" id="inputPassword" class="form-control"
+                           autocomplete="current-password" required placeholder="Entre su contraseña">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <div class="row">
+                    <div class="col-sm-12 float-left">
+                        <button type="submit" class="btn btn-secondary btn-block">Iniciar sesión</button>
+                    </div>
+                </div>
+            </form>
+{#            <form method="post">#}
+{#                {% if error %}#}
+{#                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#                {% endif %}#}
+
+{#                {% if app.user %}#}
+{#                    <div class="mb-3">#}
+{#                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+{#                    </div>#}
+{#                {% endif %}#}
+
+{#                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>#}
+{#                <label for="inputUsername">Username</label>#}
+{#                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>#}
+{#                <label for="inputPassword">Password</label>#}
+{#                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>#}
+
+{#                <input type="hidden" name="_csrf_token"#}
+{#                       value="{{ csrf_token('authenticate') }}"#}
+{#                >#}
+
+{#                <button class="btn btn-lg btn-primary" type="submit">#}
+{#                    Sign in#}
+{#                </button>#}
+{#            </form>#}
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+</body>
+
+{% endblock %}

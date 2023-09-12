@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de Cargos{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+{% endblock %}
+
+{% block page %}
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>Listado de Cargos</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-1 col-3">
+                        <a href="{{ path('app_cargo_new') }}">
+                            <button type="button" class="btn btn-block bg-gradient-gray" data-toggle="tooltip"
+                                title="Nuevo">Nuevo Cargo
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="table-responsive" style="padding-left: 5px">
+                        <table class="table table-bordered table-striped" id="dataCargos">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for cargo in cargos %}
+                                <tr data-id="{{ cargo.id }}">
+                                    <td>{{ cargo.nombre }}</td>
+                                    <td class="text-center" style="margin: 0 auto;">
+                                            <a href="{{ path('app_cargo_edit', {'id': cargo.id}) }}">
+                                                <button class="btn btn-dark"
+                                                        data-toggle="tooltip"
+                                                        title="Editar"><i
+                                                            class="fas fa-edit"></i>
+                                                </button>
+                                            </a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="2">No se encontraron registros</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script>
+        $(function () {
+
+            $('#dataCargos').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "lengthMenu": [[10], [10]],
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "columnDefs": [
+                    { "width": "80%", "targets": 0 }
+                ]
+            });
+
+        });
+    </script>
+{% endblock %}

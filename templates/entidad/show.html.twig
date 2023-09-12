@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entidad{% endblock %}
+
+{% block body %}
+    <h1>Entidad</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entidad.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entidad.nombre }}</td>
+            </tr>
+            <tr>
+                <th>CentroCosto</th>
+                <td>{{ entidad.centroCosto }}</td>
+            </tr>
+            <tr>
+                <th>Demanda</th>
+                <td>{{ entidad.demanda ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloNivelActividad</th>
+                <td>{{ entidad.modeloNivelActividad ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloColaboracionInternacionalActivos_Fijos</th>
+                <td>{{ entidad.modeloColaboracionInternacionalActivosFijos ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloColaboracionInternacionalMediosTransportes</th>
+                <td>{{ entidad.modeloColaboracionInternacionalMediosTransportes ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloColaboracionInternacionalProyectos</th>
+                <td>{{ entidad.modeloColaboracionInternacionalProyectos ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloDefensaSeguridadProteccion</th>
+                <td>{{ entidad.modeloDefensaSeguridadProteccion ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloDinamicaDemografica</th>
+                <td>{{ entidad.modeloDinamicaDemografica ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloInversiones</th>
+                <td>{{ entidad.modeloInversiones ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloPortadoresCombustible</th>
+                <td>{{ entidad.modeloPortadoresCombustible ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloPortadoresEnergia</th>
+                <td>{{ entidad.modeloPortadoresEnergia ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloPortadoresServicios</th>
+                <td>{{ entidad.modeloPortadoresServicios ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloSectorExterno</th>
+                <td>{{ entidad.modeloSectorExterno ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModeloTransporte</th>
+                <td>{{ entidad.modeloTransporte ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entidad_index') }}">back to list</a>
+
+    <a href="{{ path('app_entidad_edit', {'id': entidad.id}) }}">edit</a>
+
+    {{ include('entidad/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,71 @@
+{{ form_errors(registrationForm) }}
+    {{ form_start(registrationForm) }}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    {{ form_row(registrationForm.username) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    {{ form_row(registrationForm.plainPassword) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    {{ form_row(registrationForm.nombre) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    {{ form_row(registrationForm.primerApellido) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    {{ form_row(registrationForm.segundoApellido) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    {{ form_row(registrationForm.agreeTerms) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary" style="float: left;"> Registrar</button>
+    <a class="btn btn-danger" style="float: right" href="#> Cancelar</a>
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword, {
+        label: 'Password'
+    }) }}
+        {{ form_row(registrationForm.nombre) }}
+        {{ form_row(registrationForm.primerApellido) }}
+        {{ form_row(registrationForm.segundoApellido) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+       <button type=" submit" class="btn btn-primary" style="float: left">Register</button>
+{{ form_end(registrationForm) }}

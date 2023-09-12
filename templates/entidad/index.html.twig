@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de Entidades{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+{% endblock %}
+
+{% block page %}
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>Listado de Entidades</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-2 col-4">
+                        <a href="{{ path('app_entidad_new') }}">
+                            <button type="button" class="btn btn-block bg-gradient-gray" data-toggle="tooltip"
+                                    title="Nuevo">Nueva Entidad
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="table-responsive" style="padding-left: 5px">
+                        <table class="table table-bordered table-striped" id="dataEntidades">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Tipo de Entidad</th>
+                                <th>Nombre</th>
+                                <th class="text-center">Centro de Costo</th>
+                                <th class="text-center">Demanda</th>
+                                <th class="text-center">Modelo Nivel Actividad</th>
+                                <th class="text-center">Modelo Colaboracion InternacionalActivos Fijos</th>
+                                <th class="text-center">Modelo Colaboracion Internacional Medios Transportes</th>
+                                <th class="text-center">Modelo Colaboracion Internacional Proyectos</th>
+                                <th class="text-center">Modelo Defensa Seguridad Proteccion</th>
+                                <th class="text-center">Modelo Dinamica Demografica</th>
+                                <th class="text-center">Modelo Inversiones</th>
+                                <th class="text-center">Modelo Portadores Combustible</th>
+                                <th class="text-center">Modelo Portadores Energia</th>
+                                <th class="text-center">Modelo Portadores Servicios</th>
+                                <th class="text-center">Modelo Sector Externo</th>
+                                <th class="text-center">Modelo Transporte</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for entidad in entidads %}
+                                <tr data-id="{{ entidad.id }}">
+                                    <td class="text-center">{{ entidad.tipoEntidad.nombre }}</td>
+                                    <td>{{ entidad.nombre }}</td>
+                                    <td class="text-center">{{ entidad.centroCosto }}</td>
+                                    <td class="text-center">{{ entidad.demanda ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloNivelActividad ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloColaboracionInternacionalActivosFijos ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloColaboracionInternacionalMediosTransportes ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloColaboracionInternacionalProyectos ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloDefensaSeguridadProteccion ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloDinamicaDemografica ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloInversiones ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloPortadoresCombustible ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloPortadoresEnergia ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloPortadoresServicios ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloSectorExterno ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center">{{ entidad.modeloTransporte ? 'Yes' : 'No' }}</td>
+                                    <td class="text-center" style="margin: 0 auto;">
+                                        <a href="{{ path('app_entidad_edit', {'id': entidad.id}) }}">
+                                            <button class="btn btn-dark"
+                                                    data-toggle="tooltip"
+                                                    title="Editar"><i
+                                                        class="fas fa-edit"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="17">No se encontraron registros</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script>
+        $(function () {
+
+            $('#dataEntidades').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "lengthMenu": [[4], [4]],
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "scrollY": 300,
+                "scrollCollapse": true
+            });
+
+        });
+    </script>
+{% endblock %}
